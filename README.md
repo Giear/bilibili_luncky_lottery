@@ -1,1 +1,4 @@
-# nothing
+# bl.js  >>>>>
+
+updateLog();
+getLuckyMan();
