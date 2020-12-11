@@ -7,14 +7,16 @@ let members;
 
 function setFSConfig() {
   const options = {
-    flags: "w", //
-    encoding: "utf8" // utf8编码
+    flags: "w",
+    encoding: "utf8",
+    highWaterMark: 9999
   };
   writefile = fs.createWriteStream("./log.txt", options);
   logger = new console.Console(writefile);
 }
 
 function writeLog(parama) {
+  parama = JSON.stringify(parama);
   logger.log(parama);
 }
 
@@ -48,7 +50,7 @@ function jQuery17209663270426838746_1607591659720(PageData){
   updateLog();
 }
 
-function getPageData(page){  
+function getPageData(page){
   const options = {
     url: 'https://api.bilibili.com/x/v2/reply',
     headers: {
@@ -66,13 +68,21 @@ function getPageData(page){
       _:'1607591670864'
     }
   };
-  
+
   request(options, function (error, response, body) {
-    // console.log(body);
     eval(body);
   })
 
 }
+// getPageData(1);
+// let n = 0;
+// const time = setInterval(function(){
+//   n++;
+//   console.log('第'+n+'次执行')
+//   getPageData(n);
 
-getPageData(2);
-// getLuckyMan();
+//   if( n === 108){
+//     clearInterval(time);
+//   }
+//  },5000)
+getLuckyMan();
